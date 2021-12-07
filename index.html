@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+
+<!-- Built by Tikolu using Google's emoji API -->
+<!-- https://tenor.googleapis.com/v2/featured -->
+
+<html lang="en" dir="ltr">
+	<head>
+		<title>表情包合成器</title>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width">
+		<meta name="theme-color" content="#6e823a">
+		<meta name="description" content="Combine two emojis into one. Thousands of combinations are available.">
+		<link rel="stylesheet" href="style.css">
+		<link rel="icon" href="icons/meowtle.png">
+		<link rel="apple-touch-icon" href="icons/meowtle.png">
+		<script src="emojis.js"></script>
+		<script src="script.js?v=0" defer></script>
+		<script src="https://googletagmanager.com/gtag/js?id=UA-131586815-2" async></script>
+	</head>
+	<body>
+		<p id="site-description">Combine two emojis into one. Thousands of combinations are available.</p>
+		<h1>表情包合成器</h1>
+		<div id="load-section" hidden>
+			<progress id="load-progress" value="0"></progress>
+			<p id="load-text"><a href="index.html">请点这里开始</a></p>
+			<div id="donation-list">
+				<b>版权</b>
+				<ul>
+					<li>lzw.Inc</li>
+					<li>Google.Inc<li>
+					<li>microsoft.Inc<li>
+					<li><a href="demo.html">图片转为emoji</a>
+					<li>
+					<li id="bitcoin-thank">power by<a href="test.txt"> lzw™</a></li>
+				</ul>
+			</div>
+			<img id="link-share-preview" draggable="false" onerror="document.getElementById('donation-list').hidden = false;  downloadEmojis()" onload="this.hidden = false; downloadEmojis()" hidden>
+		</div>
+		<div id="main-section" hidden>
+			<div id="sliders">
+				<div class="slider-buttons">
+					<div class="button search" id="search1" title="搜索表情(仅支持英文单词)" onclick="searchButtonClick(event, 1)"></div>
+					<div class="button random" id="random1" title="随机选择" onclick="slider1.random(true)"></div>
+				</div>
+				<div class="slider-container">
+					<div class="slider" id="slider1"></div>
+				</div>
+				<div>+</div>
+				<div class="slider-container">
+					<div class="slider" id="slider2"></div>
+				</div>
+				<div class="slider-buttons">
+					<div class="button search" id="search2" title="搜索表情(仅支持英文单词)" onclick="searchButtonClick(event, 2)"></div>
+					<div class="button random" id="random2" title="随机选择" onclick="slider2.random(true)"></div>
+				</div>
+			</div>
+			<div id="emoji-display" title="点这里开始">
+				<img id="output" draggable="false" hidden>
+				<div id="sad-turtle" hidden></div>
+			</div>
+			<div id="sharing-buttons">
+				<div id="copy-image" class="button" title="复制图片按钮" onclick="copyImage()" oncontextmenu="triggerDownload(event)"></div>
+				<div id="copy-link" class="button" title="复制链接按钮" onclick="copyLink()"></div>
+				<div id="share-image" class="button" title="分享链接按钮" onclick="shareImage()"></div>
+			</div>
+			<div id="credits">
+				<p>lzw <a href="projects">™</a>.</p>
+				<p>
+				                <a onclick="donationPopup.hidden = false" style="margin-left:2ch">关于</a>
+					<a onclick="settingsPopup.hidden = false" style="margin-left:2ch">设置</a>
+				</p>
+			</div>
+			<div id="search-bar" hidden>
+				<input type="text" id="search-box" enterkeyhint="search" autocomplete="off">
+				<div id="prev-search" class="button" onclick="searchBox.jump(-1)"></div>
+				<div id="next-search" class="button" onclick="searchBox.jump(1)"></div>
+			</div>
+		</div>
+		<div class="popup" id="donation-popup" hidden>
+			<p>由 Adobe Dw软件汉化</p>
+			<p>由谷歌™提供内核</p>
+			<p>此项目完全免费</p>
+			<hr>
+			<div class="donation-option" onclick="document.location.href='<a href="test.txt">	
+				<h1>我的wx号码</h1>
+				<p>13739274552</p>
+			</div>
+			<hr>
+			<div class="donation-option" onclick="document.location.href='<a href="test.txt">	
+				<h1>我的qq号码</h1>
+				<p>2608228506  </p>
+			</div>
+			<div class="button" onclick="donationPopup.hidden = true">关闭本窗口</div>
+		</div>
+		<div class="popup" id="settings-popup" hidden>
+			<h1>设置</h1>
+			<div>
+				<label for="sound-checkbox">开启选择时音效</label>
+				<input type="checkbox" id="sound-checkbox" onchange="localStorage.setItem('emojimixSoundOn', this.checked)" checked>
+			</div>
+			<div>
+				<label for="vibration-checkbox">开启选择时振动</label>
+				<input type="checkbox" id="vibration-checkbox" onchange="localStorage.setItem('emojimixVibrationOn', this.checked)" checked>
+			</div>
+			<div class="button" onclick="settingsPopup.hidden = true">关闭本窗口</div>
+		</div>
+		<p id="information" hidden></p>
+	</body>
+</html>

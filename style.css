@@ -1,0 +1,313 @@
+@import url("css2.css");
+
+* { -webkit-tap-highlight-color: transparent }
+*[hidden] { display: none !important }
+
+body {
+	font-family: Nunito, sans-serif;
+	text-align: center;
+	user-select: none;
+}
+
+a {
+	color: black;
+	text-decoration: underline;
+	cursor: pointer;
+}
+
+::-webkit-scrollbar {
+	width: 0;
+}
+
+#site-description {
+	opacity: 1;
+}
+
+#main-section {
+	transform-origin: top;
+	animation: scroll-in 500ms;
+}
+
+@keyframes scroll-in {
+	from {
+		transform: scaleY(0);
+	}
+}
+
+h1 {
+	font-size: 2.25em;
+}
+
+progress, input[type=checkbox] {
+	filter: hue-rotate(230deg);
+	margin-bottom: 2em;
+}
+
+p.clickable {
+	text-decoration: underline;
+	cursor: pointer;
+}
+
+#donation-list {
+	margin-top: 8em;
+}
+
+ul {
+	padding: 0;
+}
+
+li {
+	list-style-type: none;
+}
+
+#bitcoin-thank {
+	margin-top: 1em;
+}
+
+#bitcoin-thank::before {
+	content: "©";
+	background-color: orange;
+	padding: 0.2ch 0.5ch;
+	margin-right: 1ch;
+	border-radius: 100px;
+}
+
+#sliders {
+	font-size: 3em;
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: center;
+}
+
+#sliders > * {
+	margin: 0 0.25em;
+}
+
+.slider {
+	display: flex;
+	position: relative;
+	flex-direction: column;
+	overflow-y: scroll;
+	height: 3em;
+	scroll-snap-type: y mandatory;
+	scroll-behavior: smooth;
+	cursor: grab;
+}
+
+.slider > div {
+	width: 1em;
+	height: 1em;
+	scroll-snap-align: start;
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: contain;
+	pointer-events: none;
+}
+
+.slider > div::before {
+	content: "_";
+	visibility: hidden;
+}
+
+.slider::before, .slider::after {
+	content: "";
+	position: sticky;
+	width: 100%;
+	box-shadow: 0 0 8px 2px;
+	top: 0;
+}
+
+.slider::after {
+	bottom: 0;
+}
+
+.button {
+	width: 0.5em;
+	height: 0.5em;
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: contain;
+	filter: opacity(0.3);
+	transition: filter 250ms;
+	cursor: pointer;
+}
+
+.button:active, .button.active {
+	filter: none;
+}
+
+.button.search {
+	background-image: url("search.svg");
+	margin-bottom: 0.2em;
+}
+
+.button.random {
+	background-image: url("random.svg");
+}
+
+#emoji-display {
+	margin: 4vh auto 0 auto;
+	height: 16em;
+	cursor: pointer;
+}
+
+img {
+	height: 100%;
+	animation: zoom-in 250ms;
+}
+
+img.hiding, #information.hiding {
+	animation: zoom-out 250ms forwards;
+}
+
+@keyframes zoom-in {
+	from {
+		transform: scale(0);
+	}
+	to {
+		transform: none;
+	}
+}
+
+@keyframes zoom-out {
+	from {
+		transform: none;
+	}
+	to {
+		transform: scale(0);
+	}
+}
+
+#sad-turtle {
+	background-image: url("sad.png");
+	background-size: 4em;
+	background-position: center;
+	background-repeat: no-repeat;
+	height: 100%;
+	filter: grayscale(1);
+	animation: zoom-in 250ms;
+}
+
+#information {
+	position: absolute;
+	top: 55%;
+	pointer-events: none;
+	font-size: 1.5em;
+	left: 0;
+	right: 0;
+	text-shadow: 2px 2px #fff;
+	font-weight: bold;
+	transform: scale(0);
+	animation: zoom-in 250ms forwards;
+}
+
+#search-bar {
+	position: absolute;
+	display: flex;
+	align-items: center;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	width: 100%;
+	border-top: solid #bbb 1px;
+	background-color: #fff;
+}
+
+#search-box {
+	border: 0;
+	outline: 0;
+	width: 100%;
+	font-size: 1.5em;
+}
+
+#search-bar .button {
+	width: 2em;
+	height: 2em;
+}
+
+#prev-search { background-image: url("previous.svg") }
+#next-search { background-image: url("next.svg") }
+#copy-image { background-image: url("copy.svg") }
+#copy-link { background-image: url("link.svg") }
+#share-image { background-image: url("share.svg") }
+
+#sharing-buttons {
+	margin-top: 4vh;
+	display: flex;
+	justify-content: center;
+}
+
+#sharing-buttons .button {
+	width: 2em;
+	height: 2em;
+}
+
+#copy-link {
+	margin: 0 3em;
+}
+
+#credits {
+	font-size: 0.8em;
+}
+
+.popup {
+	display: flex;
+	flex-direction: column;
+	background-color: #fff;
+	position: absolute;
+	width: 60vw;
+	height: 80vh;
+	z-index: 10;
+	box-sizing: border-box;
+	box-shadow: 0 0 0px 200vw rgb(0 0 0 / 75%);
+	margin: auto;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	padding: 2em;
+}
+
+#donation-popup p {
+	margin-top: 0;
+}
+
+.donation-option {
+	cursor: pointer;
+	border: 1px solid grey;
+}
+
+.donation-option:hover {
+	filter: opacity(0.3);
+}
+
+.donation-option h1 {
+	font-size: 1.8em;
+}
+
+.popup .button {
+	margin-top: auto;
+	width: 100%;
+	height: fit-content;
+	font-size: 2em;
+	border: 1px solid grey;
+	filter: none;
+}
+
+#settings-popup > div {
+	font-size: 2em;
+}
+
+@media (orientation:portrait) {
+	.popup {
+		width: 100% !important;
+		height: 100% !important;
+		margin: 0;
+		font-size: 12px;
+	}
+}
+
+#link-share-preview {
+	height: 16em;
+}
